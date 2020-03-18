@@ -28,7 +28,8 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint 'src/**'",
     "test:watch": "jest --watch",
     "test": "jest"
   },

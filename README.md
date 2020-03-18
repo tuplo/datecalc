@@ -1,5 +1,6 @@
 # datecalc
 
+![Build](https://github.com/tuplo/datecalc/workflows/Build/badge.svg)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Perform date calculations given a simple string pattern.
