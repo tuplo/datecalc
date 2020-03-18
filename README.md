@@ -8,16 +8,16 @@ Perform date calculations given a simple string pattern.
 ## Install
 
 ```bash
-$ npm install datecalc
+$ npm install @tuplo/datecalc
 
 # or with yarn
-$ yarn add datecalc
+$ yarn add @tuplo/datecalc
 ```
 
 ## Usage
 
 ```ts
-import datecalc from 'datecalc';
+import datecalc from '@tuplo/datecalc';
 ```
 
 **Performs calculations assuming now by default**

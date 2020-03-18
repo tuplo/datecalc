@@ -1,9 +1,9 @@
 {
-  "name": "datecalc",
+  "name": "@tuplo/datecalc",
   "description": "Perform date calculations given a simple string pattern",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "repository": "git@github.com:tuplo/datecalc.git",
-  "author": "Rui Costa <ruic@tuplo.co.uk>",
+  "author": "Tuplo <dev@tuplo.co.uk>",
   "license": "MIT",
   "files": [
     "lib/**/*"
