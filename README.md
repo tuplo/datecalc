@@ -80,7 +80,7 @@ The starting moment from when to start calculating.
 
 _Default: new Date(Date.now())_
 
-**_Return value: Date_**
+#### Return value: Date
 
 Returns a new Date
 

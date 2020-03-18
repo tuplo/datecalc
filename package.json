@@ -5,6 +5,9 @@
   "repository": "git@github.com:tuplo/datecalc.git",
   "author": "Tuplo <dev@tuplo.co.uk>",
   "license": "MIT",
+  "keywords": [
+    "date"
+  ],
   "files": [
     "lib/**/*"
   ],
