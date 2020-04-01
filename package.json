@@ -33,7 +33,7 @@
     "typescript": "3.8.3"
   },
   "scripts": {
-    "build": "microbundle --sourcemap false",
+    "build": "microbundle --sourcemap false --compress false",
     "lint": "eslint 'src/**'",
     "test:watch": "jest --watch",
     "test": "jest"
