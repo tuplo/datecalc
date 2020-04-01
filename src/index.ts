@@ -3,7 +3,7 @@ const datecalc: DateCalcFn = (pattern, fromDate = new Date(Date.now())) => {
   const match = pattern.match(/([0-9-]+[DWMYhms])/g);
   if (!match) return fromDate;
   return match
-    .map(period => period.match(/([0-9-]+)([DWMYhms])/)?.slice(1))
+    .map((period) => period.match(/([0-9-]+)([DWMYhms])/)?.slice(1))
     .map(([number, unit]): [number, string] => [Number(number), unit])
     .reduce((date, [number, unit]) => {
       switch (unit) {
