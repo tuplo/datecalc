@@ -1,9 +1,6 @@
 # datecalc
 
 <p>
-  <a href="https://github.com/tuplo/datecalc/actions">
-    <img src="https://github.com/tuplo/datecalc/workflows/Build/badge.svg" alt="Build">
-  </a>
   <img src="https://packagephobia.now.sh/badge?p=@tuplo/datecalc" alt="install size">
   <img src="https://david-dm.org/tuplo/datecalc.svg">
 </p>
