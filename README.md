@@ -4,16 +4,11 @@
   <a href="https://github.com/tuplo/datecalc/actions">
     <img src="https://github.com/tuplo/datecalc/workflows/Build/badge.svg" alt="Build">
   </a>
+  <img src="https://packagephobia.now.sh/badge?p=@tuplo/datecalc" alt="install size">
   <a href="https://npmjs.org/package/@tuplo/datecalc">
     <img src="https://img.shields.io/npm/v/@tuplo/datecalc.svg" alt="NPM Version">
   </a>
   <img src="https://david-dm.org/tuplo/datecalc.svg">
-  <a href="http://commitizen.github.io/cz-cli/">
-      <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen Friendly">
-  </a>
-  <a href="https://github.com/semantic-release/semantic-release">
-    <img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release">
-  </a>
 </p>
 
 Perform date calculations given a simple string pattern.
