@@ -79,7 +79,7 @@ datecaclc('58Y', birthday); // → new Date('2019-07-04T11:00:00')
 
 ## API
 
-### datecalc(format, [fromDate])
+### datecalc(format: string, fromDate?: Date): Date
 
 #### pattern: _string_
 
