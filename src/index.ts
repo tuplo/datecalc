@@ -1,9 +1,12 @@
-type DateCalcFn = (pattern: string, fromDate?: Date) => Date;
-const datecalc: DateCalcFn = (pattern, fromDate = new Date(Date.now())) => {
+export default function datecalc(
+  pattern: string,
+  fromDate: Date = new Date(Date.now())
+): Date {
   const match = pattern.match(/([0-9-]+[DWMYhms])/g);
   if (!match) return fromDate;
   return match
-    .map((period) => period.match(/([0-9-]+)([DWMYhms])/)?.slice(1) || [])
+    .map((period) => period.match(/([0-9-]+)([DWMYhms])/))
+    .map((periodMatch) => (periodMatch ? periodMatch.slice(1) : []))
     .map(([number, unit]): [number, string] => [Number(number), unit])
     .reduce((date, [number, unit]) => {
       switch (unit) {
@@ -29,10 +32,8 @@ const datecalc: DateCalcFn = (pattern, fromDate = new Date(Date.now())) => {
           date.setTime(date.getTime() + number * 1000);
           break;
         default:
-          break;
+          return fromDate;
       }
       return new Date(date.getTime() - date.getTimezoneOffset() * 60000);
     }, fromDate);
-};
-
-export default datecalc;
+}
