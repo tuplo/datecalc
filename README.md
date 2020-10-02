@@ -1,7 +1,9 @@
 # datecalc
 
 <p>
+
   <img src="https://packagephobia.now.sh/badge?p=@tuplo/datecalc" alt="install size">
+  <a href="https://codecov.io/gh/tuplo/datecalc"><img src="https://codecov.io/gh/tuplo/datecalc/branch/master/graph/badge.svg" alt="test coverage"></a>
   <img src="https://david-dm.org/tuplo/datecalc.svg">
 </p>
 

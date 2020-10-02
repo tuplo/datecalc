@@ -32,7 +32,6 @@ export default function datecalc(
           date.setTime(date.getTime() + number * 1000);
           break;
         default:
-          return fromDate;
       }
       return new Date(date.getTime() - date.getTimezoneOffset() * 60000);
     }, fromDate);
