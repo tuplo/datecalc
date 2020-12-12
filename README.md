@@ -1,10 +1,9 @@
 # datecalc
 
 <p>
-
+  <img src="https://img.shields.io/npm/v/@tuplo/datecalc">
   <img src="https://packagephobia.now.sh/badge?p=@tuplo/datecalc" alt="install size">
   <a href="https://codecov.io/gh/tuplo/datecalc"><img src="https://codecov.io/gh/tuplo/datecalc/branch/master/graph/badge.svg" alt="test coverage"></a>
-  <img src="https://david-dm.org/tuplo/datecalc.svg">
 </p>
 
 Perform date calculations given a simple string pattern.
@@ -41,7 +40,7 @@ datecalc('15m'); // → new Date('2020-01-01T14:15:00')
 datecalc('1D -2h'); // → new Date('2020-01-02T12:00:00')
 ```
 
-**Performs sucessive calculations**
+**Performs successive calculations**
 
 ```ts
 // 58 years and 2 months from now, less 4 hours

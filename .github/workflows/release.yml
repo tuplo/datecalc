@@ -33,7 +33,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
       - run: yarn install --frozen-lockfile
-      - run: npm run ci:test:coverage
+      - run: yarn ci:test:coverage
       - uses: codecov/codecov-action@v1
 
   publish-to-npm:
