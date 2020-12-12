@@ -1,58 +1,56 @@
-name: Build
+name: Release
 on:
   push:
     branches:
       - master
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [10.x, 12.x, 13.x]
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 13
       - uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - run: npm i --no-audit
-      - run: npm run lint
-      - run: npm run ci:test
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
+      - run: yarn ci:test
 
   test-coverage:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 15
       - uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - run: npm i --no-audit
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install --frozen-lockfile
       - run: npm run ci:test:coverage
       - uses: codecov/codecov-action@v1
 
   publish-to-npm:
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 13
+          node-version: 15
           registry-url: https://registry.npmjs.org/
       - uses: actions/cache@v2
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - run: npm i --no-audit
-      - run: npm run build
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         env:
