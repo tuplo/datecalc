@@ -12,6 +12,9 @@
     "dist/index.js",
     "dist/index.d.ts"
   ],
+  "engines": {
+    "node": ">=12"
+  },
   "type": "module",
   "exports": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -39,16 +42,6 @@
     "lint": "eslint src/**/*.ts",
     "test": "jest --watch",
     "ts-check": "tsc --noEmit"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
   },
   "jest": {
     "roots": [
