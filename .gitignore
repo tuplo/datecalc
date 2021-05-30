@@ -1,4 +1,5 @@
-node_modules
+/node_modules
+/cjs
 /dist
 /coverage
 /e2e/node_modules
