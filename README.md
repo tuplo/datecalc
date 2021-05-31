@@ -2,8 +2,13 @@
 
 <p>
   <img src="https://img.shields.io/npm/v/@tuplo/datecalc">
+  <a href="https://codeclimate.com/github/tuplo/datecalc/maintainability">
+    <img src="https://api.codeclimate.com/v1/badges/6706c82cd6afe0b2c520/maintainability" />
+  </a>
+  <a href="https://codeclimate.com/github/tuplo/datecalc/test_coverage">
+    <img src="https://api.codeclimate.com/v1/badges/6706c82cd6afe0b2c520/test_coverage" />
+  </a>
   <img src="https://packagephobia.now.sh/badge?p=@tuplo/datecalc" alt="install size">
-  <a href="https://codecov.io/gh/tuplo/datecalc"><img src="https://codecov.io/gh/tuplo/datecalc/branch/master/graph/badge.svg" alt="test coverage"></a>
 </p>
 
 Perform date calculations given a simple string pattern.
