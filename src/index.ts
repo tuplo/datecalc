@@ -10,29 +10,30 @@ export default function datecalc(
     .map(([number, unit]): [number, string] => [Number(number), unit])
     .reduce((date, [number, unit]) => {
       switch (unit) {
-        case 'D':
+        case "D":
           date.setDate(date.getDate() + number);
           break;
-        case 'W':
+        case "W":
           date.setDate(date.getDate() + number * 7);
           break;
-        case 'M':
+        case "M":
           date.setMonth(date.getMonth() + number);
           break;
-        case 'Y':
+        case "Y":
           date.setFullYear(date.getFullYear() + number);
           break;
-        case 'h':
+        case "h":
           date.setTime(date.getTime() + number * 60 * 60 * 1000);
           break;
-        case 'm':
+        case "m":
           date.setTime(date.getTime() + number * 60 * 1000);
           break;
-        case 's':
+        case "s":
           date.setTime(date.getTime() + number * 1000);
           break;
         default:
       }
+
       return new Date(date.getTime() - date.getTimezoneOffset() * 60000);
     }, fromDate);
 }

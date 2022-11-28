@@ -1,8 +1,0 @@
-{
-  "transform": {
-    "^.+\\.[jt]s$": "ts-jest"
-  },
-  "moduleNameMapper": {
-    "datecalc$": "<rootDir>/node_modules/@tuplo/datecalc/cjs"
-  }
-}

@@ -9,16 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@master
       - uses: actions/cache@v2
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install --frozen-lockfile
-      - run: yarn lint
-      - run: yarn test:ci
+      - run: |
+          yarn install --frozen-lockfile
+          yarn lint
+          yarn test:ci
 
   test-coverage:
     needs: test
@@ -38,7 +39,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: yarn run test:coverage
+          coverageCommand: yarn run coverage
           debug: true
 
   publish-to-npm:
