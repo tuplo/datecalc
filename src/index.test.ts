@@ -1,8 +1,10 @@
+import { vi } from "vitest";
+
 import datecalc from "./index";
 
 describe("datecalc", () => {
 	// 2020-02-28T12:51:39.000Z
-	const dateNowSpy = jest
+	const dateNowSpy = vi
 		.spyOn(Date, "now")
 		.mockReturnValue(new Date("2020-02-28T12:51:39.000Z").getTime());
 

@@ -1,6 +1,8 @@
-import "zx/globals";
+import * as shell from "@tuplo/shell";
 
 async function main() {
+	const $ = shell.$({ verbose: true });
+
 	await $`rm -rf dist`;
 	await $`rm -rf cjs`;
 	await $`tsc --build tsconfig.build.json`;
