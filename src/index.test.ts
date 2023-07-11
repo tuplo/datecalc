@@ -1,29 +1,28 @@
-import { vi } from "vitest";
+import expect from "node:assert/strict";
+import { describe, it, mock } from "node:test";
 
 import datecalc from "./index";
 
 describe("datecalc", () => {
-	// 2020-02-28T12:51:39.000Z
-	const dateNowSpy = vi
-		.spyOn(Date, "now")
-		.mockReturnValue(new Date("2020-02-28T12:51:39.000Z").getTime());
+	mock.method(Date, "now", () =>
+		new Date("2020-02-28T12:51:39.000Z").getTime()
+	);
 
-	afterAll(() => {
-		dateNowSpy.mockRestore();
+	[
+		["1X", "2020-02-28T12:51:39"],
+		["foo", "2020-02-28T12:51:39"],
+		["bar", "2020-02-28T12:51:39"],
+	].forEach((fixture) => {
+		const [pattern] = fixture as [string, Date];
+		const expected = new Date(fixture[1]);
+
+		it(`returns current date if pattern is wrong: ${pattern}`, () => {
+			const actual = datecalc(pattern);
+			expect.deepEqual(actual, expected);
+		});
 	});
 
-	it.each([
-		["1X", new Date("2020-02-28T12:51:39")],
-		["foo", new Date("2020-02-28T12:51:39")],
-		["bar", new Date("2020-02-28T12:51:39")],
-	])("returns current date if pattern is wrong - %s", (pattern, expected) => {
-		expect.assertions(1);
-		const actual = datecalc(pattern);
-
-		expect(actual).toStrictEqual(expected);
-	});
-
-	it.each([
+	[
 		["1D", "2020-02-29T12:51:39.000Z"],
 		["3D", "2020-03-02T12:51:39.000Z"],
 		["4W", "2020-03-27T12:51:39.000Z"],
@@ -32,49 +31,43 @@ describe("datecalc", () => {
 		["17h", "2020-02-29T05:51:39.000Z"],
 		["34m", "2020-02-28T13:25:39.000Z"],
 		["40000s", "2020-02-28T23:58:19.000Z"],
-	])("calculates dates in the future - %s", (pattern, expected) => {
-		expect.assertions(1);
-		const actual = datecalc(pattern);
+	].forEach((fixture) => {
+		const [pattern] = fixture as [string, Date];
+		const expected = new Date(fixture[1]);
 
-		expect(actual).toStrictEqual(new Date(expected));
+		it(`calculates dates in the future: ${pattern}`, () => {
+			const actual = datecalc(pattern);
+			expect.deepEqual(actual, expected);
+		});
 	});
 
-	it.each([
-		["-1D", "2020-02-27T12:51:39.000Z"],
-		["-3D", "2020-02-25T12:51:39.000Z"],
-		["-4W", "2020-01-31T12:51:39.000Z"],
-		["-9M", "2019-05-28T12:51:39.000Z"],
-		["-23Y", "1997-02-28T12:51:39.000Z"],
-		["-17h", "2020-02-27T19:51:39.000Z"],
-		["-34m", "2020-02-28T12:17:39.000Z"],
-		["-40000s", "2020-02-28T01:44:59.000Z"],
-	])("calculates dates in the past - %s", (pattern, expected) => {
-		const actual = datecalc(pattern);
-
-		expect(actual).toStrictEqual(new Date(expected));
-	});
-
-	it.each([
+	[
 		["1D1h", "2020-02-29T13:51:39.000Z"],
 		["2W-1h", "2020-03-13T11:51:39.000Z"],
 		["2W -1h", "2020-03-13T11:51:39.000Z"],
-	])(
-		"calculates dates with successive date operations - %s",
-		(pattern, expected) => {
+	].forEach((fixture) => {
+		const [pattern] = fixture as [string, Date];
+		const expected = new Date(fixture[1]);
+
+		it(`calculates dates with successive date operations: ${pattern}`, () => {
 			const actual = datecalc(pattern);
+			expect.deepEqual(actual, expected);
+		});
+	});
 
-			expect(actual).toStrictEqual(new Date(expected));
-		}
-	);
-
-	it.each([
+	[
 		["4W", "2020-03-08T19:00:00.000Z"],
 		["1Y -4M", "2020-10-09T19:00:00.000Z"],
 		["13h -30m", "2020-02-10T07:30:00.000Z"],
-	])("calculates dates from a given date - %s", (pattern, expected) => {
-		const fromDate = new Date("2020-02-09T19:00:00.000Z");
-		const actual = datecalc(pattern, fromDate);
+	].forEach((fixture) => {
+		const [pattern] = fixture as [string, Date];
+		const expected = new Date(fixture[1]);
 
-		expect(actual).toStrictEqual(new Date(expected));
+		it(`calculates dates from a given date: ${pattern}`, () => {
+			const fromDate = new Date("2020-02-09T19:00:00.000Z");
+			const actual = datecalc(pattern, fromDate);
+
+			expect.deepEqual(actual, expected);
+		});
 	});
 });

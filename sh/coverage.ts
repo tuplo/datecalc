@@ -7,7 +7,7 @@ async function main() {
 	await $`rm -rf coverage/`;
 	await $`rm -rf .nyc_output/`;
 
-	await $`NODE_ENV=test LOG_LEVEL=silent nyc yarn test:ci --coverage`;
+	await $`nyc --reporter=lcov node --test --experimental-test-coverage --test-reporter spec --loader tsx src/*.test.ts`;
 }
 
 main();

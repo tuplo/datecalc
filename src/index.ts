@@ -1,6 +1,9 @@
 function datecalc(pattern: string, fromDate: Date = new Date(Date.now())) {
 	const match = pattern.match(/([0-9-]+[DWMYhms])/g);
-	if (!match) return fromDate;
+	if (!match) {
+		return fromDate;
+	}
+
 	return match
 		.map((period) => period.match(/([0-9-]+)([DWMYhms])/))
 		.map((periodMatch) => (periodMatch ? periodMatch.slice(1) : []))
