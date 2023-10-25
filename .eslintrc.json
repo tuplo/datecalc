@@ -7,7 +7,8 @@
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "vitest"
   ],
   "parserOptions": {
     "ecmaVersion": 9,

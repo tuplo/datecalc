@@ -31,18 +31,22 @@
 	},
 	"devDependencies": {
 		"@tuplo/shell": "1.2.0",
-		"@types/node": "20.4.1",
-		"@typescript-eslint/eslint-plugin": "6.0.0",
-		"@typescript-eslint/parser": "6.0.0",
-		"esbuild": "0.18.11",
-		"eslint": "8.44.0",
+		"@types/node": "20.8.8",
+		"@typescript-eslint/eslint-plugin": "6.9.0",
+		"@typescript-eslint/parser": "6.9.0",
+		"@vitest/coverage-v8": "0.34.6",
+		"esbuild": "0.19.5",
+		"eslint": "8.52.0",
 		"eslint-config-airbnb-base": "15.0.0",
-		"eslint-config-prettier": "8.8.0",
-		"eslint-plugin-import": "2.27.5",
+		"eslint-config-prettier": "9.0.0",
+		"eslint-plugin-import": "2.29.0",
+		"eslint-plugin-vitest": "0.3.8",
 		"nyc": "15.1.0",
-		"prettier": "3.0.0",
-		"tsx": "3.12.7",
-		"typescript": "5.1.6"
+		"prettier": "3.0.3",
+		"tsx": "3.14.0",
+		"typescript": "5.2.2",
+		"vite": "4.5.0",
+		"vitest": "0.34.6"
 	},
 	"scripts": {
 		"build": "tsx sh/build.ts",
@@ -50,7 +54,7 @@
 		"format": "prettier --write src",
 		"lint:ts": "tsc --noEmit",
 		"lint": "eslint src/**/*.ts",
-		"test:ci": "node --test --loader tsx src/*.test.ts",
-		"test": "node --test --watch --test-reporter spec --loader tsx src/*.test.ts"
+		"test:ci": "vitest run",
+		"test": "vitest --watch"
 	}
 }
